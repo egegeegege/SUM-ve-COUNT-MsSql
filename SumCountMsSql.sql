@@ -39,3 +39,13 @@ use Northwind
 	-- Chai adl� �r�n�n  miktarı 30 dan az verilen siperişleri sıralar
 	select * from [Order Details]
 	where ProductID in (select ProductID from Products where ProductName = 'Chai') and Quantity < 30
+
+use Northwind
+
+select CategoryID,CategoryName, Description from Categories
+where CategoryID in (select CategoryID from Products where ProductName = 'Teatime Chocolate Biscuits')
+
+-- New Orleans Cajun Delights adlı şirketin kaç farklı ürün tedarik attiğinin sayısın bulunuz
+
+select COUNT(ProductID) as 'tedarik edilen ürün sayısı' from Products
+where SupplierID in( select SupplierID from Suppliers where CompanyName = 'New Orleans Cajun Delights')
